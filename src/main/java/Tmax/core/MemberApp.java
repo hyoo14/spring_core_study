@@ -11,7 +11,7 @@ public class MemberApp {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class); // 이름, 형식
 
 //        AppConfig appConfig = new AppConfig(); 2nd conde
 //        MemberService memberService = appConfig.memberService();
