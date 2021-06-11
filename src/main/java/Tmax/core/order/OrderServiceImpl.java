@@ -6,7 +6,10 @@ import Tmax.core.discount.RateDiscountPolicy;
 import Tmax.core.member.Member;
 import Tmax.core.member.MemberRepository;
 import Tmax.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component()
 public class OrderServiceImpl implements OrderService{
 
 
@@ -15,6 +18,7 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
