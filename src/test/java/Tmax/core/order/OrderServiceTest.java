@@ -1,10 +1,9 @@
 package Tmax.core.order;
 
 import Tmax.core.AppConfig;
-import Tmax.core.member.Grade;
-import Tmax.core.member.Member;
-import Tmax.core.member.MemberService;
-import Tmax.core.member.MemberServiceImpl;
+import Tmax.core.discount.FixDiscountPolicy;
+import Tmax.core.discount.RateDiscountPolicy;
+import Tmax.core.member.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

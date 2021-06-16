@@ -13,7 +13,7 @@ public class MemberApp {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class); // 이름, 형식
 
-//        AppConfig appConfig = new AppConfig(); 2nd conde
+//        AppConfig appConfig = new AppConfig(); 2nd code
 //        MemberService memberService = appConfig.memberService();
 
 //        MemberService memberService = new MemberServiceImpl(); 1st code
