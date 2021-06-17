@@ -7,6 +7,7 @@ import Tmax.core.member.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -19,7 +20,7 @@ public class AllBeanTest {
 
     @Test
     void findAllBean(){
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class, DiscountService.class);
 
         DiscountService discountService = ac.getBean(DiscountService.class);
         Member member = new Member(1L, "userA", Grade.VIP);
@@ -30,6 +31,16 @@ public class AllBeanTest {
 
         int rateDiscountPrice = discountService.discount(member, 20000, "rateDiscountPolicy");
         assertThat(rateDiscountPrice).isEqualTo(2000);
+
+        String[] beanDefinitionNames = ac.getBeanDefinitionNames();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
+            //
+            if (beanDefinition.getRole()==BeanDefinition.ROLE_APPLICATION){
+                Object bean = ac.getBean(beanDefinitionName);
+                System.out.println("name = " + beanDefinitionName + " object = " + bean);
+            }
+        }
     }
 
     static class DiscountService {
